@@ -1,0 +1,29 @@
+/*David Warner 12/3/2023*/
+
+ul
+{
+    font-size: 1.1em;
+    list-style-type: none;
+}
+
+li
+{
+    padding-bottom: 0.5em;
+}
+
+p
+{
+    text-align: left;
+    font-size: 1.1em;
+    padding-left: 2.5em;
+}
+
+body
+{
+    background-color: #FFFFE0;
+}
+
+html
+{
+    border: 1em solid red;
+}

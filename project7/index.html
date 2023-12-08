@@ -1,0 +1,144 @@
+<!--David Warner 12/3/2023-->
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Project 7</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="project7.css">
+    </head>
+
+    <body>
+        <h3>1.  Identify a common JavaScript style guide, and hyperlink to it.</h3>
+            <p><a href="https://google.github.io/styleguide/jsguide.html" target="blank">Google Javascript Style.</a></p>
+
+        <h3>2.  Identify three distinct "best practice" programming practices and explain how they create better code.</h3>
+            <ul>
+                <li>Use semicolons even when they can be skipped, due to the fact that there are instances where a line break is not interpreted as a semicolon.</li>
+                <li>Try to avoid nesting levels that are too deep, this will help code readability for yourself and your peers.</li>
+                <li>Write your code above your functions, as this will make it clearer what the code is used for, and may save time in reading functions.</li>
+            </ul>
+
+        <h3>3.  Identify three distinct sloppy programming practices and explain the problems they each create.</h3>
+           <ul>
+            <li>Writing one-letter variables. These tend to vanish inside of walls of code, and be extremely difficult to locate when needed later on.</li>
+            <li>Using abbreviations. This can make it difficult to understand what your code is supposed to do.</li>
+            <li>Using similar variable names. If you have two similar variable names, such as "ball" and "bald", it can make code very difficult to read. Also, a typo could potentially confuse your code if it interchanges one variable name for the other.</li>
+           </ul>       
+
+        <h3>4.  Explain the difference between a primitive, an array, and an object and include an example of each.</h3>
+            <ul>
+                <li>A primitive is a value of a primitive type, such as a string. A primitive can be used as though it were an object, but it still is not an object.</li>
+                    
+                <li>A normal object is incapable of manipulating the order of its elements. An array on the other hand is a type of object that allows us to do just that. An example of an array would be <br> <b>let toDoList = ["eat", "sleep", "videogames",];</b>.</li>
+
+                <li>An object is capable of storing multiple values as properties. A function is an example of a type of object. An array is another type of object, one that is used to store a collection of ordered values.</li>
+            </ul>
+        
+        <h3>5.  Explain the phrase "Fractions divided by powers of 2 are exactly represented in the binary system" and what universal problem this is referring to in all programming languages?</h3>
+        <p>In computers and programming languages, numbers are stored in memory in binary form. Because of this, any fraction that is not a power of 2 cannot be represented perfectly. For instance, neither 0.1 or 0.2 are negative powers of 2, therefore, they cannot be represented with complete accuracy in JavaScript.</p>
+        
+        <script>
+            
+            function enterNumbers(){ //Exercise 1.
+                let number1 = prompt("Please enter your first number.");
+                let operator = prompt("Please enter a mathematical operator.");
+                let number2 = prompt("Please enter your second number.");
+                switch(operator){
+                    case "+":
+                        console.log(Number(number1) + Number(number2));
+                        break;
+                    case "-":
+                        console.log(number1 - number2);
+                        break;
+                    case "/":
+                        console.log(number1 / number2);
+                        break;
+                    case "*":
+                        console.log(number1 * number2);
+                        break;
+                }
+            }
+
+                  enterNumbers();
+            
+            
+            let cheery = function() { //Exercise 2.
+                let message = ["You're awesome!", "You're the best!", "Enjoy life!", "Reach for the stars!", "Love with all your heart!", ];
+                console.log(message[Math.floor(Math.random() * 5)]);
+            };
+            
+            cheery();
+            
+            
+            function ucFirst(str) { /* Exercise 3. This creates a function expression named ucFirst that accepts an argument. */
+                if (!str) return str; /* If the argument is empty, return it empty.*/
+
+                return str[0].toUpperCase() + str.slice(1); /* I'll divide this into 4 parts: return, str[0].toUpperCase(), +, str.slice(1);, and explain what each does. The first part returns the result that follows. The second part takes the uppercased first letter of the argument and discards the rest. The third part (+) concatenates part 2 and part 4. And the fourth part takes every letter of the argument starting with the second and excluding the first.      
+                */
+            };// This marks the end of the function declaration.
+            
+            function checkSpam(str) { /* Exercise 4. This creates a function expression named checkSpam that accepts an argument. */
+                let lowerStr = str.toLowerCase(); /* This creates a variable called lowerStr that takes the argument and modifies its letters to be lowercase. */
+
+                return lowerStr.includes('viagra') || lowerStr.includes('xxx'); /* This returns str if it includes the words "viagra" or "xxx" in the argument. */
+            } // This marks the end of the function declaration.
+            
+            function truncate(str, maxlength) {/* Exercise 5. This creates a function expression named truncate that accepts two arguments. */
+                return (str.length > maxlength) ?
+                str.slice(0, maxlength - 1) + '…' : str; /* The condition checks if the length of str is greater than maxlength. If this is true, then str will be truncated down to the first letter through to the maxlength minus one. The reason one is subtracted is because the first letter place is 0, and the last letter is excluded. This truncated word is then concatenated to an ellipsis. If the condition is false, str is returned.*/
+            } // This marks the end of the function declaration.
+
+            function averageInput() { // Exercise 6. 
+
+            let numbers = [];
+
+            while (true) {
+
+                let value = prompt("Please enter a number between 0 and 100?", 0);
+
+                // should we cancel?
+                if (value === "" || value === null || !isFinite(value)) break;
+
+                ((value>=0)&&(value<=100)) ? numbers.push(+value) : value;
+            }
+
+            let sum = 0;
+                
+            for (let number of numbers) {
+                sum += number;
+            }
+            
+            let average = sum /= numbers.length;
+            return average;
+                
+            }
+
+            alert( averageInput() );
+
+            
+            let addTwo = function(arr) { // Exercise 7.
+                 
+                let firstMax = Math.max.apply(null, arr);
+                arr.splice(arr.indexOf(firstMax), 1);
+                let secondMax = Math.max.apply(null, arr);
+                return firstMax + secondMax;
+            }
+                     
+            let arr1= [0,1,2,5];
+            let arr2= [10,20,4,1];
+            alert(addTwo(arr1));
+            alert(addTwo(arr2));
+            
+            
+            function sortByAge(arr) { /* Exercise 8. I tested it to make sure it works.*/
+                arr.sort(function(a, b) { return a.age - b.age});
+            }
+
+        
+        </script>
+    
+    </body>
+
+</html>
+    
